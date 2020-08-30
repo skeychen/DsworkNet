@@ -1,0 +1,80 @@
+﻿@{
+    Layout = "~/Views/Commons/Get.cshtml";
+}
+@section head{
+<script type="text/javascript">
+// 扩展菜单写法
+$dswork.page.join = function(td, menu, id){
+	$(menu).append($('<div iconCls="menuTool-user">自定义</div>').bind("click", function(){
+		location.href = "GetDemoById.htm?page=@ViewBag.pageModel.CurrentPage&keyIndex=" + id;
+	}));
+};
+$dswork.doAjax = true;
+$dswork.callback = function(){if($dswork.result.type == 1){
+	location.href = "GetDemo.htm?page=@ViewBag.pageModel.CurrentPage";
+}};
+$(function(){
+	$dswork.page.menu("DelDemo.htm", "UpdDemo1.htm", "GetDemoById.htm", @ViewBag.pageModel.CurrentPage);
+});
+</script>
+}
+@{
+<table border="0" cellspacing="0" cellpadding="0" class="listLogo">
+	<tr>
+		<td class="title">DEMO列表</td>
+		<td class="menuTool">
+			<a class="insert" href="AddDemo1.htm?page=@ViewBag.pageModel.CurrentPage">添加</a>
+			<a class="delete" id="listFormDelAll" href="#">删除所选</a>
+		</td>
+	</tr>
+</table>
+<div class="line"></div>
+<form id="queryForm" method="post" action="GetDemo.htm">
+<table border="0" cellspacing="0" cellpadding="0" class="queryTable">
+	<tr>
+		<td class="input">
+			&nbsp;标题：<input type="text" name="title" value="@Request["title"]" />
+			&nbsp;内容：<input type="text" name="content" value="@Request["content"]" />
+			&nbsp;创建时间：<input type="text" name="foundtime" value="@Request["foundtime"]" />
+		</td>
+		<td class="query"><input id="_querySubmit_" type="button" class="button" value="查询" /></td>
+	</tr>
+</table>
+</form>
+<div class="line"></div>
+<form id="listForm" method="post" action="DelDemo.htm">
+<table id="dataTable" border="0" cellspacing="1" cellpadding="0" class="listTable">
+	<tr class="list_title">
+		<td style="width:2%"><input id="chkall" type="checkbox" /></td>
+		<td style="width:5%">操作</td>
+		<td>标题</td>
+		<td>内容</td>
+		<td>创建时间</td>
+		<td style="width:15%">操作</td>
+	</tr>
+@{
+    int i = 0;
+}
+@foreach(var d in @ViewBag.result)
+{
+    i++;
+	<tr class="@(i % 2 == 0 ? "list_even" : "list_odd")">
+		<td><input name="keyIndex" type="checkbox" value="@d.id" /></td>
+		<td class="menuTool" keyIndex="@d.id">&nbsp;</td>
+		<td>@d.title</td>
+		<td>@d.content</td>
+		<td>@d.foundtime</td>
+		<td class="menuTool">
+			<a class="update" href="UpdDemo1.htm?keyIndex=@d.id">修改</a>
+			<a class="delete" href="DelDemo.htm?keyIndex=@d.id">删除</a>
+		</td>
+	</tr>
+}
+</table>
+<input name="page" type="hidden" value="@ViewBag.pageModel.CurrentPage" />
+</form>
+<table border="0" cellspacing="0" cellpadding="0" class="bottomTable">
+	<tr><td>@Html.Raw(@ViewBag.pageNav.GetPage())</td></tr>
+</table>
+<br />
+}

@@ -1,0 +1,19 @@
+﻿<!--<!DOCTYPE html>-->
+<html>
+<head>
+<meta charset="UTF-8" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="js/jskey/themes/menu/jskey.menu.css" />
+<script type="text/javascript" src="js/jskey/jskey.menu.js"></script>
+<script type="text/javascript" src="admin.json.js"></script>
+</head>
+<body onselectstart="return false;" oncontextmenu="return true;">
+</body>
+<script type="text/javascript">
+	var jsonData = treedata;
+	$jskey.menu.root = "/DemoNet";
+	//$jskey.menu.show(jsonData, false);// 可打开多个
+	$jskey.menu.show(jsonData, true);// 只能打开一个，删掉<!DOCTYPE html>则会其余最会置底
+	$jskey.menu.clickBar(0);
+</script>
+</html>

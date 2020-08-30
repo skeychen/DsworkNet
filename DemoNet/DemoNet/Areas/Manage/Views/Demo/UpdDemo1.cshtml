@@ -1,0 +1,41 @@
+﻿@{
+    Layout = "~/Views/Commons/UpdAjax.cshtml";
+}
+@section head{
+	<script type="text/javascript">
+		$dswork.callback = function () {
+			if ($dswork.result.type == 1) {
+				location.href = "GetDemo.htm?page=@ViewBag.page";
+			}
+		};
+	</script>
+}
+@{
+<table border="0" cellspacing="0" cellpadding="0" class="listLogo">
+	<tr>
+		<td class="title">修改</td>
+		<td class="menuTool">
+			<a class="save" id="dataFormSave" href="#">保存</a>
+			<a class="back" href="getDemo.htm?page=@ViewBag.page">返回</a>
+		</td>
+	</tr>
+</table>
+<div class="line"></div>
+<form id="dataForm" method="post" action="updDemo2.htm">
+<table border="0" cellspacing="1" cellpadding="0" class="listTable" class="pure-form">
+	<tr>
+		<td class="form_title">标题：</td>
+		<td class="form_input"><input type="text" name="title" value="@ViewBag.po.title" /></td>
+	</tr>
+	<tr>
+		<td class="form_title">内容：</td>
+		<td class="form_input"><input type="text" name="content" value="@ViewBag.po.content" /></td>
+	</tr>
+	<tr>
+		<td class="form_title">创建时间：</td>
+		<td class="form_input"><input type="text" name="foundtime" class="WebDate" format="yyyy-MM-dd" value="@ViewBag.po.foundtime" /></td>
+	</tr>
+</table>
+<input type="hidden" name="id" value="@ViewBag.po.id" />
+</form>
+}

@@ -1,0 +1,16 @@
+﻿SqlMap.config文件
+	database节点
+		provider节点的name属性对应providers.config文件的provider节点的name（enabled="true"）
+
+	sqlMaps节点
+		增加的sqlMap节点，如果引用的是【嵌入的资源】，则：
+			<sqlMap embedded="DemoNetLib.Mapper.Demo.map.config, DemoNetLib" />
+		增加的sqlMap节点，如果引用的是普通文件，则：
+			<sqlMap resource="DemoNet/Mapper/Demo.map.config" />
+
+SpringObjects.config文件，所有的Dao、Service、Controller类，都需要配置到该文件
+	Dao和Service语法为：
+		<object id="demoDao" type="DemoNet.Dao.DemoDao" />
+		<object id="demoService" type="DemoNet.Service.DemoService" />
+	Controller语法为（非单例）：
+		<object type="Areas.Manage.Controllers.DemoController" singleton="false" />

@@ -1,0 +1,229 @@
+﻿运行前配置说明：
+假设获取的项目放置在工作目录：
+	E:\Workspaces\workspaceDswork\LibNet
+	E:\Workspaces\workspaceDswork\web
+	E:\Workspaces\workspaceDswork\DemoNet
+以上三个项目需要放在同一级目录结构下
+
+IISExpress配置文件默认位于：【C:\Users\当前用户\Documents\IISExpress\config\applicationhost.config】
+VS2015的话，IISExpress文件默认位于解决方案目录下的【/.vs/config/applicationhost.config】
+打开项目前需要在IISExpress配置文件中<sites>节点增加如下配置：
+	<site name="web" id="2">
+		<application path="/" applicationPool="Clr4IntegratedAppPool">
+			<virtualDirectory path="/" physicalPath="E:\Workspaces\workspaceDswork\web\web" />
+		</application>
+		<application path="/web" applicationPool="Clr4IntegratedAppPool">
+			<virtualDirectory path="/" physicalPath="E:\Workspaces\workspaceDswork\web\web" />
+		</application>
+		<bindings>
+			<binding protocol="http" bindingInformation="*:7070:localhost" />
+		</bindings>
+	</site>
+	<site name="DemoNet" id="3">
+		<application path="/" applicationPool="Clr4IntegratedAppPool">
+			<virtualDirectory path="/" physicalPath="E:\Workspaces\workspaceDswork\DemoNet\DemoNet" />
+		</application>
+		<application path="/DemoNet" applicationPool="Clr4IntegratedAppPool">
+			<virtualDirectory path="/" physicalPath="E:\Workspaces\workspaceDswork\DemoNet\DemoNet" />
+		</application>
+		<application path="/web" applicationPool="Clr4IntegratedAppPool">
+			<virtualDirectory path="/" physicalPath="E:\Workspaces\workspaceDswork\web\web" />
+		</application>
+		<bindings>
+			<binding protocol="http" bindingInformation="*:9090:localhost" />
+		</bindings>
+	</site>
+
+
+
+
+
+
+
+
+
+
+
+
+项目文件说明：
+
+增加域Manage
+并修改域ManageAreaRegistration.cs的url映射
+	Manage/{controller}/{action}/{id}
+	改为
+	Manage/{controller}/{action}.htm
+
+增加了mvc视图文件：Views/Commons
+
+Global.asax.cs文件中的类MvcApplication
+	继承类【System.Web.HttpApplication】修改为继承类【Spring.Web.Mvc.SpringMvcApplication】
+
+对应的程序类库Lib，Mapper目录里所有config文件的生成操作，需要改为【嵌入的资源】
+
+配置Web.config
+	增加configSections配置
+		<configSections>
+			<sectionGroup name="ibatis">
+				<section name="logging" type="IBatisNet.Common.Logging.ConfigurationSectionHandler, IBatisNet.Common"/>
+			</sectionGroup>
+			<sectionGroup name="spring">
+				<section name="context" type="Spring.Context.Support.ContextHandler, Spring.Core" />
+				<section name="objects" type="Spring.Context.Support.DefaultSectionHandler, Spring.Core"/>
+				<section name="parsers" type="Spring.Context.Support.NamespaceParsersSectionHandler, Spring.Core"/>
+			</sectionGroup>
+		</configSections>
+
+	增加ibatisnet配置
+		<ibatis>
+			<logging>
+				<logFactoryAdapter type="IBatisNet.Common.Logging.Impl.Log4NetLoggerFA, IBatisNet.Common.Logging.Log4Net">
+					<arg key="configType" value="external"/>
+				</logFactoryAdapter>
+			</logging>
+		</ibatis>
+
+	增加spring.net配置
+		<spring>
+			<context>
+				<resource uri="~/Config/applicationContext.config"/>
+			</context>
+			<objects xmlns="http://www.springframework.net" default-autowire="byName"/>
+			<parsers>
+				<parser namespace="http://www.springframework.net/database" type="Spring.Data.Config.DatabaseNamespaceParser, Spring.Data" schemaLocation="assembly://Spring.Data/Spring.Data.Config/spring-database-1.1.xsd"/>
+			</parsers>
+		</spring>
+
+	在system.webServer节点内，增加<modules runAllManagedModulesForAllRequests="true" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+需要的引用内容：
+    <Reference Include="Common.Logging">
+      <HintPath>..\..\LibNet\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="IBatisNet.Common">
+      <HintPath>..\..\LibNet\ibatis\IBatisNet.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="IBatisNet.Common.Logging.Log4Net">
+      <HintPath>..\..\LibNet\ibatis\IBatisNet.Common.Logging.Log4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="IBatisNet.DataMapper">
+      <HintPath>..\..\LibNet\ibatis\IBatisNet.DataMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\LibNet\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Aop">
+      <HintPath>..\..\LibNet\spring\Spring.Aop.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Core">
+      <HintPath>..\..\LibNet\spring\Spring.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data">
+      <HintPath>..\..\LibNet\spring\Spring.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data.IBatis">
+      <HintPath>..\..\LibNet\dswork\Spring.Data.IBatis.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Web">
+      <HintPath>..\..\LibNet\spring\Spring.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Web.Mvc4">
+      <HintPath>..\..\LibNet\spring\Spring.Web.Mvc4.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\..\LibNet\sqlite\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="Dswork.Core">
+      <HintPath>..\..\LibNet\dswork\Dswork.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Dswork.Mvc">
+      <HintPath>..\..\LibNet\dswork\Dswork.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Dswork.Spring">
+      <HintPath>..\..\LibNet\dswork\Dswork.Spring.dll</HintPath>
+    </Reference>
+    <Reference Include="Dswork.Web">
+      <HintPath>..\..\LibNet\dswork\Dswork.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\LibNet\mvc\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\LibNet\mvc\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\..\LibNet\mvc\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\LibNet\mvc\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\..\LibNet\mvc\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\LibNet\mvc\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\LibNet\mvc\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\LibNet\mvc\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\LibNet\mvc\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\LibNet\mvc\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\LibNet\mvc\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\LibNet\mvc\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\LibNet\mvc\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>

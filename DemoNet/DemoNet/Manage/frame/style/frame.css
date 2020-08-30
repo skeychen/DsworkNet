@@ -1,0 +1,62 @@
+/*IE6背景图片不缓存BUG*/
+* {filter:expression(document.execCommand("BackgroundImageCache", false, true));}
+* {font-size:12px;}
+html,body {height:100%;margin:0px;padding:0px;overflow:hidden;}
+iframe {margin:0px;padding:0px;border:none;width:100%;height:100%;}
+
+a {font-size:12px;cursor:hand;cursor:pointer;text-decoration:none;}
+a:link {color:#2e3094;}
+a:visited {color:#2e3094;}
+a:hover {color:#ff0000;}
+
+
+div.title {z-index:1;top:23px;left:25px;color:#ffffff;position:absolute;font-size:28px;font-weight:bold;font-family:"黑体", "宋体"}
+.topframe {height:100%;width:100%;top:0px;left:0px;}
+.topframe .logo {width:100%;height:76px;overflow:hidden;background-color:#7198DB;}
+.topframe .logo .left {
+float:left;width:300px;height:100%;background:url(top/left.png) no-repeat;overflow:hidden;
+_background:none;
+_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="style/top/left.png");
+}
+.topframe .logo .right {
+float:right;width:300px;height:100%;background:url(top/right.png) no-repeat;overflow:hidden;text-align:center;
+_background:none;
+_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="style/top/right.png");
+}
+
+.topframe .show {width:100%;height:24px;font-size:12px;color:#2e3094;overflow:hidden;
+	background-color: #E0ECFF;
+	background: -webkit-linear-gradient(top,#E0ECFF 0,#EFF5FF 100%);
+	background: -moz-linear-gradient(top,#E0ECFF 0,#EFF5FF 100%);
+	background: -o-linear-gradient(top,#E0ECFF 0,#EFF5FF 100%);
+	background: linear-gradient(to bottom,#E0ECFF 0,#EFF5FF 100%);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#E0ECFF,endColorstr=#EFF5FF,GradientType=0);
+}
+.topframe .show * {line-height:24px;vertical-align:middle;padding-left:3px;}
+.topframe .show .img {border:none;}
+.topframe .show .left {float:left;padding-left:5px;height:100%;}
+.topframe .show .left div {display:inline;height:100%;}
+.topframe .show .right {float:right;padding-right:10px;height:100%;}
+.topframe .show .right a {padding-left:3px;height:24px;}
+
+
+.middleframe {border:none;width:100%;height:100%;background-color:#E0ECFF;}
+.middleframe #menu {height:100%;float:left;width:200px;overflow:hidden;border:1px solid #658dcb;border-left:none;}
+.middleframe .drop {height:100%;float:left;position:relative;width:6px;background-color:#E0ECFF;overflow:hidden;}
+.middleframe .drop img {position:absolute;top:50%;cursor:pointer;}
+.middleframe .view {height:100%;background-color:#FEFEFE;overflow:hidden;}
+.icon-closeone{background:url(middle/closeone.png) no-repeat;}
+.icon-closeall{background:url(middle/closeall.png) no-repeat;}
+
+
+.bottomframe {width:100%;height:100%;line-height:25px;color:#2e3094;text-align:center;
+	background-color: #E0ECFF;
+	background: -webkit-linear-gradient(top,#EFF5FF 0,#E0ECFF 100%);
+	background: -moz-linear-gradient(top,#EFF5FF 0,#E0ECFF 100%);
+	background: -o-linear-gradient(top,#EFF5FF 0,#E0ECFF 100%);
+	background: linear-gradient(to bottom,#EFF5FF 0,#E0ECFF 100%);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#EFF5FF,endColorstr=#E0ECFF,GradientType=0);
+}
+.bottomframe .copyRight {font-family:Arial;}
