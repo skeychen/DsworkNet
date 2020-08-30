@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<!--outputEncoding:UTF-8(65001) | GBK(936)-->
+	<charset outputEncoding="936">UTF-8</charset>
+
+	<templates path="E:/Workspaces/workspaceDsWork/CodeBuilder/builder/template">
+		<template name="csharp" id="idao"		viewpath="/csharp/idao.vm"          path="/{src}/Dao/{model}Dao.cs" comment="ibatisnet" />
+		<template name="csharp" id="imapper"	viewpath="/csharp/imapper.vm"       path="/{src}/Mapper/{model}.map.config" comment="ibatisnet" />
+		<template name="csharp" id="model"		viewpath="/csharp/model.vm"         path="/{src}/Model/{model}.cs" />
+		<template name="csharp" id="service"	viewpath="/csharp/service.vm"       path="/{src}/Service/{model}.Service.cs" />
+		<template name="csharp" id="controller" viewpath="/csharp/controller.vm"    path="/{web}/Areas/{module}/Controllers/{model}Controller.cs" />
+		<template name="csharp" id="get"		viewpath="/csharp/get.vm"     		path="/{web}/Areas/{module}/Views/{model}/Get{model}.cshtml" />
+		<template name="csharp" id="getById"	viewpath="/csharp/getById.vm"       path="/{web}/Areas/{module}/Views/{model}/Get{model}ById.cshtml" />
+		<template name="csharp" id="add"		viewpath="/csharp/add.vm"           path="/{web}/Areas/{module}/Views/{model}/Add{model}1.cshtml" />
+		<template name="csharp" id="upd"		viewpath="/csharp/upd.vm"           path="/{web}/Areas/{module}/Views/{model}/Upd{model}1.cshtml" />
+
+		<template name="jsp"    id="hdao"		viewpath="/java/hdao.vm"            path="/{src}/{namespace}/dao/{module}/{model}Dao.java" comment="hibernate" />
+		<template name="jsp"    id="hmapper"	viewpath="/java/hmapper.vm"         path="/{src}/{namespace}/mapper/{model}.map.xml" comment="hibernate" />
+		<template name="jsp"    id="idao"		viewpath="/java/idao.vm"            path="/{src}/{namespace}/dao/{module}/{model}Dao.java" comment="mybatis" />
+		<template name="jsp"    id="imapper"	viewpath="/java/imapper.vm"         path="/{src}/{namespace}/mapper/{model}.map.xml" comment="mybatis" />
+		<template name="jsp"    id="model"		viewpath="/java/model.vm"           path="/{src}/{namespace}/model/{module}/{model}.java" />
+		<template name="jsp"    id="service"	viewpath="/java/service.vm"         path="/{src}/{namespace}/service/{module}/{model}Service.java" />
+		<template name="jsp"    id="jspget"		viewpath="/java/jsp/get.vm"         path="/{web}/{webmodule}/get{model}.jsp" />
+		<template name="jsp"    id="jspgetById"	viewpath="/java/jsp/getById.vm"     path="/{web}/{webmodule}/get{model}ById.jsp" />
+		<template name="jsp"    id="jspadd1"	viewpath="/java/jsp/add1.vm"        path="/{web}/{webmodule}/add{model}1.jsp" />
+		<template name="jsp"    id="jspadd2"	viewpath="/java/jsp/add2.vm"        path="/{web}/{webmodule}/add{model}2.jsp" />
+		<template name="jsp"    id="jspupd1"	viewpath="/java/jsp/upd1.vm"        path="/{web}/{webmodule}/upd{model}1.jsp" />
+		<template name="jsp"    id="jspupd2"	viewpath="/java/jsp/upd2.vm"        path="/{web}/{webmodule}/upd{model}2.jsp" />
+		<template name="jsp"    id="jspdel"		viewpath="/java/jsp/del.vm"         path="/{web}/{webmodule}/del{model}.jsp" />
+
+		<template name="java"   id="hdao"		viewpath="/java/hdao.vm"            path="/{src}/{namespace}/dao/{module}/{model}Dao.java" comment="hibernate" />
+		<template name="java"   id="hmapper"	viewpath="/java/hmapper.vm"         path="/{src}/{namespace}/mapper/{model}.map.xml" comment="hibernate" />
+		<template name="java"   id="idao"		viewpath="/java/idao.vm"            path="/{src}/{namespace}/dao/{module}/{model}Dao.java" comment="mybatis" />
+		<template name="java"   id="imapper"	viewpath="/java/imapper.vm"         path="/{src}/{namespace}/mapper/{model}.map.xml" comment="mybatis" />
+		<template name="java"   id="model"		viewpath="/java/model.vm"           path="/{src}/{namespace}/model/{module}/{model}.java" />
+		<template name="java"   id="service"	viewpath="/java/service.vm"         path="/{src}/{namespace}/service/{module}/{model}Service.java" />
+		<template name="java"   id="controller"	viewpath="/java/mvc/controller.vm"  path="/{src}/{namespace}/controller/{module}/{model}Controller.java" />
+		<template name="java"   id="get"		viewpath="/java/mvc/get.vm"  		path="/{web}/WEB-INF/view/jsp/{webmodule}/get{model}.jsp" />
+		<template name="java"   id="getById"	viewpath="/java/mvc/getById.vm"     path="/{web}/WEB-INF/view/jsp/{webmodule}/get{model}ById.jsp" />
+		<template name="java"   id="add"		viewpath="/java/mvc/add.vm"         path="/{web}/WEB-INF/view/jsp/{webmodule}/add{model}.jsp" />
+		<template name="java"   id="upd"		viewpath="/java/mvc/upd.vm"         path="/{web}/WEB-INF/view/jsp/{webmodule}/upd{model}.jsp" />
+
+		<template name="mvc"    id="hdao"		viewpath="/java/hdao.vm"            path="/{src}/{namespace}/dao/{module}/{model}Dao.java" comment="hibernate" />
+		<template name="mvc"    id="hmapper"	viewpath="/java/hmapper.vm"         path="/{src}/{namespace}/mapper/{model}.map.xml" comment="hibernate" />
+		<template name="mvc"    id="idao"		viewpath="/java/idao.vm"            path="/{src}/{namespace}/dao/{module}/{model}Dao.java" comment="mybatis" />
+		<template name="mvc"    id="imapper"	viewpath="/java/imapper.vm"         path="/{src}/{namespace}/mapper/{model}.map.xml" comment="mybatis" />
+		<template name="mvc"    id="model"		viewpath="/java/model.vm"           path="/{src}/{namespace}/model/{module}/{model}.java" />
+		<template name="mvc"    id="service"	viewpath="/java/service.vm"         path="/{src}/{namespace}/service/{module}/{model}Service.java" />
+		<template name="mvc"    id="controller"	viewpath="/java/base/controller.vm" path="/{src}/{namespace}/controller/{module}/{model}Controller.java" />
+		<template name="mvc"    id="get"		viewpath="/java/base/get.vm"  		path="/{web}/WEB-INF/view/jsp/{webmodule}/get{model}.jsp" />
+		<template name="mvc"    id="getById"	viewpath="/java/base/getById.vm"    path="/{web}/WEB-INF/view/jsp/{webmodule}/get{model}ById.jsp" />
+		<template name="mvc"    id="add"		viewpath="/java/base/add.vm"        path="/{web}/WEB-INF/view/jsp/{webmodule}/add{model}.jsp" />
+		<template name="mvc"    id="upd"		viewpath="/java/base/upd.vm"        path="/{web}/WEB-INF/view/jsp/{webmodule}/upd{model}.jsp" />
+	</templates>
+
+	<params>
+		<param name="test" value="随便写" />
+	</params>
+
+  <connect name="OracleModel.dll" type="Builder.OracleModel" url="Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.1.129)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=ORCL)));User Id=meng;Password=meng" />
+  <builder developer="无名" templatename="base" project="E:/workspace/2/gzcgw" src="src" web="web">
+    <code frame="dswork" namespace="com.gzcgw" module="gxpt" webmodule="/manage/gxpt/ajclqk" table="T_AJCLQK_INFO" model="InfoAjclqk" comment="mybatis" />
+    <code frame="dswork" namespace="com.gzcgw" module="gxpt" webmodule="/manage/gxpt/clyyzz" table="T_CLYYZZ_INFO" model="InfoClyyzz" comment="mybatis" />
+    <code frame="dswork" namespace="com.gzcgw" module="gxpt" webmodule="/manage/gxpt/emission" table="T_EMISSION_INFO" model="InfoEmission" comment="mybatis" />
+    <code frame="dswork" namespace="com.gzcgw" module="gxpt" webmodule="/manage/gxpt/night" table="T_NIGHT_PROVE_INFO" model="InfoNight" comment="mybatis" />
+    <code frame="dswork" namespace="com.gzcgw" module="gxpt" webmodule="/manage/gxpt/sgjianli" table="T_SGJIANLI_INFO" model="InfoSgjianli" comment="mybatis" />
+    <code frame="dswork" namespace="com.gzcgw" module="gxpt" webmodule="/manage/gxpt/sgmonitor" table="T_SGMONITOR_INFO" model="InfoSgmonitor" comment="mybatis" />
+    <code frame="dswork" namespace="com.gzcgw" module="gxpt" webmodule="/manage/gxpt/shigong" table="T_SHIGONG_PERMIT_INFO" model="InfoShigong" comment="mybatis" />
+    <code frame="dswork" namespace="com.gzcgw" module="gxpt" webmodule="/manage/gxpt/transport" table="T_TRANSPORT_INFO" model="InfoTransport" comment="mybatis" />
+    <code frame="dswork" namespace="com.gzcgw" module="gxpt" webmodule="/manage/gxpt/treatment" table="T_TREATMENT_INFO" model="InfoTreatment" comment="mybatis" />
+    <code frame="dswork" namespace="com.gzcgw" module="gxpt" webmodule="/manage/gxpt/ysdwjyzz" table="T_YSDWJYZZ_INFO" model="InfoYsdwjyzz" comment="mybatis" />
+    <code frame="dswork" namespace="com.gzcgw" module="gxpt" webmodule="/manage/gxpt/ysmonitor" table="T_YSMONITOR_INFO" model="InfoYsmonitor" comment="mybatis" />
+    <code frame="dswork" namespace="com.gzcgw" module="gxpt" webmodule="/manage/gxpt/jsrycyzg" table="T_JSRYCYZG_INFO" model="InfoJsrycyzg" comment="mybatis" />
+    <code frame="dswork" namespace="com.gzcgw" module="gxpt" webmodule="/manage/gxpt/lsqxnc" table="T_LSQXNC_INFO" model="InfoLsqxnc" comment="mybatis" />
+    <code frame="dswork" namespace="com.gzcgw" module="gxpt" webmodule="/manage/gxpt/symt" table="T_SYMT_INFO" model="InfoSymt" comment="mybatis" />
+    <code frame="dswork" namespace="com.gzcgw" module="gxpt" webmodule="/manage/gxpt/jtwf" table="T_JTWF_INFO" model="InfoJtwf" comment="mybatis" />
+
+    <!--
+		<code frame="dswork" namespace="com.gzcgw" module="gxpt" webmodule="/manage/gxpt/" table="" model="" comment="mybatis" />
+		<code frame="dswork" namespace="com.gzcgw" module="gxpt" webmodule="/manage/gxpt/" table="" model="" comment="mybatis" />
+		<code frame="dswork" namespace="com.gzcgw" module="gxpt" webmodule="/manage/gxpt/" table="" model="" comment="mybatis" />
+		-->
+
+  </builder>
+</config>
+
+<!--
+connect：
+	connect：提供对应的数据库连接方式
+	name：使用对应数据库的*Model.dll
+	type：调用Builder.*Model
+	url：连接数据库的connectionString
+	例子：
+		<connect name="OracleModel.dll" type="Builder.OracleModel" url="Provider=OraOLEDB.Oracle.1;Data Source =(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=127.0.0.1)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME = orcl)));User Id=demo;password=demo;" />
+		<connect name="GBaseModel.dll"  type="Builder.GBaseModel"  url="Server=192.168.40.205;Port=5258;Database=demo;User Id=demo;Password=demo" />
+		<connect name="MySqlModel.dll"  type="Builder.MySqlModel"  url="server=localhost;Port=3306;Database=demo;User Id=root;Password=" />
+		<connect name="OracleModel.dll" type="Builder.OracleModel" url="Provider=OraOLEDB.Oracle.1;Data Source =127.0.0.1/orcl;User Id=demo;password=demo;" />
+		下面的是免安装oracle客户端，但需要把OracleClient.rar目录解压到builder目录
+		<connect name="OracleModel.dll" type="Builder.OracleModel" url="Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=127.0.0.1)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=ORCL)));User Id=dx;Password=dx" />
+
+template：
+	template中的path均自动补上builder标签中的project路径
+	namespace值、module值和webmodule值其中的“.”和“\”会自动替换为“/”
+	“//”会被处理一次为“/”，即“///”只处理为“//”
+
+builder：
+	builder：
+		type：java | mvc | jsp | csharp
+		project：根目录。项目目录根路径(Java) | 解决方案目录根路径(C#)
+		src：源代码目录。src目录(Java) | 类库Lib目录(C#)
+		web：网页程序目录。web目录(Java) | MVC项目目录(C#，首字母大写)
+		developer：输入你的名字
+	code：(在模板中可用vo中的GetParam来获取，key为Frame、Namespace、Module、Model、ModelName[Model首字母小写])
+		namespace：package或namespace前缀，用“.”分隔，有“.”则会创建出多级目录
+		module：模块名，类的下级package支持多级(Java) | MVC域的名称只能一个单词(C#)
+		webmodule：页面模块名，url的父级目录支持多级(Java) | 暂时无用(C#)
+		table：数据库表名，大写
+		model：映射数据库的模型类名，首字母大写
+		comment：mybatis | hibernate | ibatisnet，当template存在comment时，如果和它不一致，则不生成该template
+		frame：使用的框架。dswork或tecamo(Java) | Dswork或Tecamo(C#)
+	模板变量：code中的值被处理为首字母大写，且作模板变量vo中的子变量使用
+		namespace值、module值和webmodule值其中的“.”和“\”会自动替换为“/”，“//”会被处理一次为“/”，即“///”只处理为“//”
+		Namespace：vo.Namespace变量中“/”会处理为“.”，并且不以“.”开头
+		Module：vo.Module变量会去掉所有“/”，可为空，为空时C#中模板会出错
+		Javamodule：vo.Javamodule变量使用的是Module的值，但“/”会处理为“.”，并且以“.”开头，可为空
+	例子：
+		<builder type="java" project="E:/Workspaces/workspaceTemp/java/DemoJava" src="src" web="web">
+			<code frame="dswork" namespace="/com.testwork" module="/demo.vv" webmodule="/manage/demo" table="DEMO" model="Demo" comment="mybatis" />
+			<code frame="dswork" namespace="com/testwork" module="demo1/vv" webmodule="/manage/demo" table="DEMO" model="Demo1" comment="hibernate" />
+		</builder>
+		<builder type="jsp" project="E:/Workspaces/workspaceTemp/jsp/DemoJava" src="src" web="web">
+			<code frame="dswork" namespace="com.testwork" module="demo" table="DEMO" model="Demo" comment="mybatis" />
+		</builder>
+		<builder type="csharp" project="E:/Workspaces/workspaceTemp/c/DemoNet" src="DemoNetLib" web="DemoNet">
+			<code frame="Dswork" namespace="Com.Testwork" module="demo" table="DEMO" model="Demo" comment="ibatisnet" />
+		</builder>
+
+params：
+	自定义属性(不可以为vo)，可往模板中增加自定义变量，默认加入developer和当前时间：currentDate
+	可以在模板中使用此变量的值，不能使用语言关键字
+-->
