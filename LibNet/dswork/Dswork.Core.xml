@@ -1,0 +1,1142 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Dswork.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Dswork.Core.Db.BaseDao`2">
+            <summary>
+            IBatisNet的基础Dao类
+            </summary>
+            <typeparam name="T">对象模型</typeparam>
+            <typeparam name="PK">主键类</typeparam>
+        </member>
+        <member name="T:Dswork.Core.Db.MyBatisDao">
+            <summary>
+            IBatisNet的抽象类，不是MyBatis的
+            </summary>
+        </member>
+        <member name="F:Dswork.Core.Db.MyBatisDao.log">
+            <summary>
+            用于写入log4net日志
+            </summary>
+        </member>
+        <member name="M:Dswork.Core.Db.MyBatisDao.GetEntityClass">
+            <summary>
+            用于返回命名空间的全路径typeof(T).FullName
+            </summary>
+            <returns>Type</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.MyBatisDao.GetSqlNamespace">
+            <summary>
+            当无法使用GetEntityClass()时，可以重载此方法，用于返回命名空间的值
+            </summary>
+            <returns>String</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.MyBatisDao.GetStatementName(System.String)">
+            <summary>
+            获取需要操作sql的id
+            </summary>
+            <param name="statementName">SQL的ID(不包含namespace)</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.MyBatisDao.ExecuteInsert(System.String,System.Object)">
+            <summary>
+            封装ISqlMapper.Insert方法
+            </summary>
+            <param name="statementName">SQL的ID(不包含namespace)</param>
+            <param name="parameter">参数</param>
+            <returns>Object</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.MyBatisDao.ExecuteDelete(System.String,System.Object)">
+            <summary>
+            封装ISqlMapper.Delete方法
+            </summary>
+            <param name="statementName">SQL的ID(不包含namespace)</param>
+            <param name="parameter">参数</param>
+            <returns>int</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.MyBatisDao.ExecuteUpdate(System.String,System.Object)">
+            <summary>
+            封装ISqlMapper.Update方法
+            </summary>
+            <param name="statementName">SQL的ID(不包含namespace)</param>
+            <param name="parameter">参数</param>
+            <returns>int</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.MyBatisDao.ExecuteSelect(System.String,System.Object)">
+            <summary>
+            封装ISqlMapper.QueryForObject方法
+            </summary>
+            <param name="statementName">SQL的ID(不包含namespace)</param>
+            <param name="parameter">参数</param>
+            <returns>Object</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.MyBatisDao.ExecuteSelect``1(System.String,System.Object)">
+            <summary>
+            封装ISqlMapper.QueryForObject&lt;T&gt;方法
+            </summary>
+            <param name="statementName">SQL的ID(不包含namespace)</param>
+            <param name="parameter">参数</param>
+            <returns>T</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.MyBatisDao.ExecuteSelectList(System.String,System.Object)">
+            <summary>
+            封装ISqlMapper.QueryForList方法
+            </summary>
+            <param name="statementName">SQL的ID(不包含namespace)</param>
+            <param name="parameter">参数</param>
+            <returns>IList</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.MyBatisDao.ExecuteSelectList``1(System.String,System.Object)">
+            <summary>
+            封装ISqlMapper.QueryForList&lt;T&gt;方法
+            </summary>
+            <param name="statementName">SQL的ID(不包含namespace)</param>
+            <param name="parameter">参数</param>
+            <returns>IList&lt;T&gt;</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.MyBatisDao.QueryList(System.String,Dswork.Core.Page.PageRequest)">
+            <summary>
+            不分页查询数据，封装ISqlMapper.QueryForList方法
+            </summary>
+            <param name="statementName">SQL的ID(不包含namespace)</param>
+            <param name="pageRequest">PageRequest.getFilters()查询参数和条件数据</param>
+            <returns>IList</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.MyBatisDao.QueryList``1(System.String,Dswork.Core.Page.PageRequest)">
+            <summary>
+            不分页查询数据，封装ISqlMapper.QueryForList&lt;T&gt;方法
+            </summary>
+            <param name="statementName">SQL的ID(不包含namespace)</param>
+            <param name="pageRequest">PageRequest.getFilters()查询参数和条件数据</param>
+            <returns>IList&lt;T&gt;</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.MyBatisDao.QueryPage(System.String,Dswork.Core.Page.PageRequest,System.String,Dswork.Core.Page.PageRequest)">
+            <summary>
+            分页查询数据
+            </summary>
+            <param name="statementName">查询SQL的ID(不包含namespace)</param>
+            <param name="pageRequest">PageRequest.getFilters()查询参数和条件数据</param>
+            <param name="statementNameCount">查询总数SQL的ID(不包含namespace)</param>
+            <param name="pageRequestCount">PageRequest.getFilters()查询参数和条件数据</param>
+            <returns>Page&lt;Object&gt;</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.MyBatisDao.QueryPage``1(System.String,Dswork.Core.Page.PageRequest,System.String,Dswork.Core.Page.PageRequest)">
+            <summary>
+            分页查询数据
+            </summary>
+            <param name="statementName">查询SQL的ID(不包含namespace)</param>
+            <param name="pageRequest">PageRequest.getFilters()查询参数和条件数据</param>
+            <param name="statementNameCount">查询总数SQL的ID(不包含namespace)</param>
+            <param name="pageRequestCount">PageRequest.getFilters()查询参数和条件数据</param>
+            <returns>Page&lt;T&gt;</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.MyBatisDao.QueryCount(System.String,Dswork.Core.Page.PageRequest)">
+            <summary>
+            执行查询操作取得数据条数
+            </summary>
+            <param name="statementNameCount">SQL的ID(不包含namespace)</param>
+            <param name="pageRequestCount">PageRequest.getFilters()查询参数和条件数据</param>
+            <returns>int</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.MyBatisDao.QueryDataSet(System.String,System.Object)">
+            <summary>
+            执行查询操作返回数据集
+            </summary>
+            <param name="statementName">SQL的ID(不包含namespace)</param>
+            <param name="parameter">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dswork.Core.Db.MyBatisDao.BeginTransaction">
+            <summary>
+            开始事务
+            </summary>
+        </member>
+        <member name="M:Dswork.Core.Db.MyBatisDao.CommitTransaction">
+            <summary>
+            提交事务
+            </summary>
+        </member>
+        <member name="M:Dswork.Core.Db.MyBatisDao.RollBackTransaction">
+            <summary>
+            回滚事务
+            </summary>
+        </member>
+        <member name="P:Dswork.Core.Db.MyBatisDao.SqlSessionTemplate">
+            <summary>
+            注入ISqlMapper对象
+            </summary>
+        </member>
+        <member name="P:Dswork.Core.Db.MyBatisDao.SqlSessionTemplateDialect">
+            <summary>
+            注入IDialect对象
+            </summary>
+        </member>
+        <member name="T:Dswork.Core.Db.EntityDao`2">
+            <summary>
+            基类接口
+            </summary>
+            <typeparam name="T">对象模型</typeparam>
+            <typeparam name="PK">主键类</typeparam>
+        </member>
+        <member name="M:Dswork.Core.Db.EntityDao`2.Save(`0)">
+            <summary>
+            新增对象
+            </summary>
+            <param name="entity">需要新增的对象模型</param>
+            <returns>返回执行结果</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.EntityDao`2.Delete(`1)">
+            <summary>
+            删除对象
+            </summary>
+            <param name="primaryKey">如果是单主键的，传入主键数据类型，如果为多主键的，可以用主键类或map</param>
+            <returns>返回执行结果</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.EntityDao`2.Update(`0)">
+            <summary>
+            更新对象
+            </summary>
+            <param name="entity">需要新增的对象模型</param>
+            <returns>返回执行结果</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.EntityDao`2.Get(`1)">
+            <summary>
+            查询对象
+            </summary>
+            <param name="primaryKey">如果是单主键的，传入主键数据类型，如果为多主键的，可以用主键类或map</param>
+            <returns>返回执行结果</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.EntityDao`2.QueryList(Dswork.Core.Page.PageRequest)">
+            <summary>
+            默认列表方法
+            </summary>
+            <param name="pageRequest">PageRequest.getFilters()查询参数和条件数据</param>
+            <returns>IList</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.EntityDao`2.QueryPage(Dswork.Core.Page.PageRequest)">
+            <summary>
+            MyBatis默认分页方法
+            </summary>
+            <param name="pageRequest">PageRequest.getFilters()查询参数和条件数据</param>
+            <returns>Page</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.BaseDao`2.Save(`0)">
+            <summary>
+            新增对象
+            </summary>
+            <param name="entity">需要新增的对象模型</param>
+            <returns>int返回执行结果</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.BaseDao`2.Delete(`1)">
+            <summary>
+            根据主键删除对象
+            </summary>
+            <param name="primaryKey">如果是单主键的，传入主键数据类型，如果为多主键的，可以用主键类或map</param>
+            <returns>int返回执行结果</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.BaseDao`2.Update(`0)">
+            <summary>
+            更新对象
+            </summary>
+            <param name="entity">需要更新的对象模型</param>
+            <returns>int返回执行结果</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.BaseDao`2.Get(`1)">
+            <summary>
+            根据主键primaryKey获取对象
+            </summary>
+            <param name="primaryKey">如果是单主键的，传入主键数据类型，如果为多主键的，可以用主键类或map</param>
+            <returns>T对象模型</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.BaseDao`2.QueryCount(Dswork.Core.Page.PageRequest)">
+            <summary>
+            取得数据条数
+            </summary>
+            <param name="pageRequest">PageRequest.getFilters()查询参数和条件数据</param>
+            <returns>int</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.BaseDao`2.QueryList(Dswork.Core.Page.PageRequest)">
+            <summary>
+            不分页查询数据
+            </summary>
+            <param name="pageRequest">PageRequest.getFilters()查询参数和条件数据</param>
+            <returns>IList&lt;T&gt;</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.BaseDao`2.QueryPage(Dswork.Core.Page.PageRequest)">
+            <summary>
+            分页查询数据，statement默认为query
+            </summary>
+            <param name="pageRequest">PageRequest.getFilters()查询参数和条件数据</param>
+            <returns>Page&lt;T&gt;</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.BaseDao`2.QueryPage(System.String,Dswork.Core.Page.PageRequest)">
+            <summary>
+            分页查询数据
+            </summary>
+            <param name="statementName">查询数据的statement，统计总数的是statement + "Count"</param>
+            <param name="pageRequest">PageRequest.getFilters()查询参数和条件数据</param>
+            <returns>Page&lt;T&gt;</returns>
+        </member>
+        <member name="T:Dswork.Core.Db.BaseService`2">
+            <summary>
+            服务基础类
+            </summary>
+            <typeparam name="T">对象模型</typeparam>
+            <typeparam name="PK">主键类</typeparam>
+        </member>
+        <member name="M:Dswork.Core.Db.BaseService`2.GetEntityDao">
+            <summary>
+            需要被子类覆盖
+            </summary>
+            <returns>EntityDao&lt;T, PK&gt;</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.BaseService`2.Save(`0)">
+            <summary>
+            新增对象
+            </summary>
+            <param name="entity">需要新增的对象模型</param>
+            <returns>int返回执行结果</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.BaseService`2.Delete(`1)">
+            <summary>
+            根据主键删除对象
+            </summary>
+            <param name="primaryKey">如果是单主键的，传入主键数据类型，如果为多主键的，可以用主键类或map</param>
+            <returns>int返回执行结果</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.BaseService`2.DeleteBatch(`1[])">
+            <summary>
+            根据主键批量删除对象
+            </summary>
+            <param name="primaryKeys">主键数组(如果是单主键的，传入主键数据类型，如果为多主键的，可以用主键类或map)</param>
+        </member>
+        <member name="M:Dswork.Core.Db.BaseService`2.Update(`0)">
+            <summary>
+            更新对象
+            </summary>
+            <param name="entity">需要更新的对象模型</param>
+            <returns>int返回执行结果</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.BaseService`2.Get(`1)">
+            <summary>
+            根据主键primaryKey获取对象
+            </summary>
+            <param name="primaryKey">如果是单主键的，传入主键数据类型，如果为多主键的，可以用主键类或map</param>
+            <returns>T对象模型</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.BaseService`2.QueryList(System.Collections.Hashtable)">
+            <summary>
+            取得全部数据
+            </summary>
+            <param name="map">查询参数和条件数据</param>
+            <returns>IList&lt;T&gt;</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.BaseService`2.QueryList(Dswork.Core.Page.PageRequest)">
+            <summary>
+            默认列表方法
+            </summary>
+            <param name="pageRequest">PageRequest.getFilters()查询参数和条件数据</param>
+            <returns>IList&lt;T&gt;</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.BaseService`2.QueryPage(System.Int32,System.Int32,System.Collections.Hashtable)">
+            <summary>
+            得到分页模型
+            </summary>
+            <param name="currentPage">当前页码</param>
+            <param name="pageSize">一页显示的条数</param>
+            <param name="map">查询参数和条件数据</param>
+            <returns>Page&lt;T&gt;</returns>
+        </member>
+        <member name="M:Dswork.Core.Db.BaseService`2.QueryPage(Dswork.Core.Page.PageRequest)">
+            <summary>
+            默认分页方法
+            </summary>
+            <param name="pageRequest">PageRequest.getFilters()查询参数和条件数据</param>
+            <returns>Page&lt;T&gt;</returns>
+        </member>
+        <member name="T:Dswork.Core.Mybaits.Dialect.Dialect">
+            <summary>
+            Dialect
+            </summary>
+        </member>
+        <member name="T:Dswork.Core.Mybaits.Dialect.IDialect">
+            <summary>
+            IDialect
+            </summary>
+        </member>
+        <member name="M:Dswork.Core.Mybaits.Dialect.IDialect.SupportsLimitOffset">
+            <summary>
+            默认不支持分页
+            </summary>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:Dswork.Core.Mybaits.Dialect.IDialect.GetCountSql(System.String)">
+            <summary>
+            获取count语句
+            </summary>
+            <param name="sql">原始sql语句</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:Dswork.Core.Mybaits.Dialect.IDialect.GetLimitString(System.String,System.Int32,System.Int32)">
+            <summary>
+            将sql变成分页sql
+            </summary>
+            <param name="sql">原始sql语句</param>
+            <param name="offset">跳过行数</param>
+            <param name="limit">返回行数</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:Dswork.Core.Mybaits.Dialect.Dialect.SupportsLimitOffset">
+            <summary>
+            默认不支持分页
+            </summary>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:Dswork.Core.Mybaits.Dialect.Dialect.GetCountSql(System.String)">
+            <summary>
+            获取count语句
+            </summary>
+            <param name="sql">原始sql语句</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:Dswork.Core.Mybaits.Dialect.Dialect.GetLimitString(System.String,System.Int32,System.Int32)">
+            <summary>
+            将sql变成分页sql
+            </summary>
+            <param name="sql">原始sql语句</param>
+            <param name="offset">跳过行数</param>
+            <param name="limit">返回行数</param>
+            <returns>String</returns>
+        </member>
+        <member name="T:Dswork.Core.Mybaits.Dialect.LimitOffsetDialect">
+            <summary>
+            可用于支持(limit m offset n)语法的数据库，如：MySQL、PostgreSQL、SQLite、GBase、H2
+            </summary>
+        </member>
+        <member name="M:Dswork.Core.Mybaits.Dialect.LimitOffsetDialect.SupportsLimitOffset">
+            <summary>
+            是否支持分页，limit和offset
+            </summary>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:Dswork.Core.Mybaits.Dialect.LimitOffsetDialect.GetLimitString(System.String,System.Int32,System.Int32)">
+            <summary>
+            将sql变成分页sql
+            </summary>
+            <param name="sql">原始sql语句</param>
+            <param name="offset">跳过行数</param>
+            <param name="limit">返回行数</param>
+            <returns>String</returns>
+        </member>
+        <member name="T:Dswork.Core.Mybaits.Dialect.OracleDialect">
+            <summary>
+            Dialect for Oracle
+            </summary>
+        </member>
+        <member name="M:Dswork.Core.Mybaits.Dialect.OracleDialect.SupportsLimitOffset">
+            <summary>
+            是否支持分页，limit和offset
+            </summary>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:Dswork.Core.Mybaits.Dialect.OracleDialect.GetLimitString(System.String,System.Int32,System.Int32)">
+            <summary>
+            将sql变成分页sql
+            </summary>
+            <param name="sql">原始sql语句</param>
+            <param name="offset">跳过行数</param>
+            <param name="limit">返回行数</param>
+            <returns>String</returns>
+        </member>
+        <member name="T:Dswork.Core.Mybaits.Dialect.SQLServer2012Dialect">
+            <summary>
+            Dialect for SQLServer2012
+            </summary>
+        </member>
+        <member name="M:Dswork.Core.Mybaits.Dialect.SQLServer2012Dialect.SupportsLimitOffset">
+            <summary>
+            是否支持分页，limit和offset
+            </summary>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:Dswork.Core.Mybaits.Dialect.SQLServer2012Dialect.GetLimitString(System.String,System.Int32,System.Int32)">
+            <summary>
+            将sql变成分页sql
+            </summary>
+            <param name="sql">原始sql语句</param>
+            <param name="offset">跳过行数</param>
+            <param name="limit">返回行数</param>
+            <returns>String</returns>
+        </member>
+        <member name="T:Dswork.Core.Mybaits.Dialect.DB2Dialect">
+            <summary>
+            Dialect for DB2
+            </summary>
+        </member>
+        <member name="M:Dswork.Core.Mybaits.Dialect.DB2Dialect.SupportsLimitOffset">
+            <summary>
+            是否支持分页，limit和offset
+            </summary>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:Dswork.Core.Mybaits.Dialect.DB2Dialect.GetLimitString(System.String,System.Int32,System.Int32)">
+            <summary>
+            将sql变成分页sql
+            </summary>
+            <param name="sql">原始sql语句</param>
+            <param name="offset">跳过行数</param>
+            <param name="limit">返回行数</param>
+            <returns>String</returns>
+        </member>
+        <member name="T:Dswork.Core.Mybaits.Dialect.SQLServerDialect">
+            <summary>
+            可用于支持ROW_NUMBER() over(order by *)语法的数据库，如：SQLServer2005、SQLServer2008
+            </summary>
+        </member>
+        <member name="M:Dswork.Core.Mybaits.Dialect.SQLServerDialect.SupportsLimitOffset">
+            <summary>
+            是否支持分页，limit和offset
+            </summary>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:Dswork.Core.Mybaits.Dialect.SQLServerDialect.GetLimitString(System.String,System.Int32,System.Int32)">
+            <summary>
+            将sql变成分页sql
+            </summary>
+            <param name="sql">原始sql语句</param>
+            <param name="offset">跳过行数</param>
+            <param name="limit">返回行数</param>
+            <returns>String</returns>
+        </member>
+        <member name="T:Dswork.Core.Mybaits.Dialect.SQLServer2000Dialect">
+            <summary>
+            Dialect for SQLServer2000，查询的sql必须存在ID列，且翻页以ID顺序排序
+            </summary>
+        </member>
+        <member name="M:Dswork.Core.Mybaits.Dialect.SQLServer2000Dialect.SupportsLimitOffset">
+            <summary>
+            是否支持分页，limit和offset
+            </summary>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:Dswork.Core.Mybaits.Dialect.SQLServer2000Dialect.GetLimitString(System.String,System.Int32,System.Int32)">
+            <summary>
+            将sql变成分页sql
+            </summary>
+            <param name="sql">原始sql语句</param>
+            <param name="offset">跳过行数</param>
+            <param name="limit">返回行数</param>
+            <returns>String</returns>
+        </member>
+        <member name="T:Dswork.Core.Page.Page`1">
+            <summary>
+            分页信息, 第一页从1开始
+            </summary>
+            <typeparam name="T">IList的每条记录使用HashTable存储</typeparam>
+        </member>
+        <member name="M:Dswork.Core.Page.Page`1.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="currentPage">当前页码</param>
+            <param name="pageSize">一页显示的条数</param>
+            <param name="totalCount">数据总条数</param>
+        </member>
+        <member name="M:Dswork.Core.Page.Page`1.#ctor(System.Int32,System.Int32,System.Int32,System.Collections.IList)">
+            <summary>
+            构造函数，使用ResultList变量，尽量使用泛型
+            </summary>
+            <param name="currentPage">当前页码</param>
+            <param name="pageSize">一页显示的条数</param>
+            <param name="totalCount">数据总条数</param>
+            <param name="result">结果集IList</param>
+        </member>
+        <member name="M:Dswork.Core.Page.Page`1.#ctor(System.Int32,System.Int32,System.Int32,System.Collections.Generic.IList{`0})">
+            <summary>
+            构造函数，使用Result变量&lt;T&gt;
+            </summary>
+            <param name="currentPage">当前页码</param>
+            <param name="pageSize">一页显示的条数</param>
+            <param name="totalCount">数据总条数</param>
+            <param name="result">结果集IList&lt;T&gt;</param>
+        </member>
+        <member name="M:Dswork.Core.Page.Page`1.SetResult(System.Collections.IList)">
+            <summary>
+            设置结果集
+            </summary>
+            <param name="value">IList</param>
+        </member>
+        <member name="M:Dswork.Core.Page.Page`1.SetResult(System.Collections.Generic.IList{`0})">
+            <summary>
+            设置结果集
+            </summary>
+            <param name="value">IList&lt;T&gt;</param>
+        </member>
+        <member name="M:Dswork.Core.Page.Page`1.GetResult">
+            <summary>
+            取得结果集，结果集IList
+            </summary>
+        </member>
+        <member name="M:Dswork.Core.Page.Page`1.GetResult``1">
+            <summary>
+            取得结果集，结果集IList&lt;T&gt;
+            </summary>
+        </member>
+        <member name="P:Dswork.Core.Page.Page`1.CurrentPage">
+            <summary>
+            取得当前页页码
+            </summary>
+        </member>
+        <member name="P:Dswork.Core.Page.Page`1.FirstResultIndex">
+            <summary>
+            得到结果集第一条数据的行编码
+            </summary>
+        </member>
+        <member name="P:Dswork.Core.Page.Page`1.LastPage">
+            <summary>
+            取得数据总页数，也就是最后一页页码
+            </summary>
+        </member>
+        <member name="P:Dswork.Core.Page.Page`1.NextPage">
+            <summary>
+            取得下一页页码
+            </summary>
+        </member>
+        <member name="P:Dswork.Core.Page.Page`1.PageName">
+            <summary>
+            取得当前页码的参数名，默认值是page
+            </summary>
+        </member>
+        <member name="P:Dswork.Core.Page.Page`1.PageSize">
+            <summary>
+            取得一页显示的条数
+            </summary>
+        </member>
+        <member name="P:Dswork.Core.Page.Page`1.PageSizeName">
+            <summary>
+            取得一页显示的条数的参数名，默认值是page
+            </summary>
+        </member>
+        <member name="P:Dswork.Core.Page.Page`1.PreviousPage">
+            <summary>
+            取得上一页页码
+            </summary>
+        </member>
+        <member name="P:Dswork.Core.Page.Page`1.TotalCount">
+            <summary>
+            取得数据总条数，0表示没有数据
+            </summary>
+        </member>
+        <member name="P:Dswork.Core.Page.Page`1.TotalPage">
+            <summary>
+            取得数据总页数
+            </summary>
+        </member>
+        <member name="P:Dswork.Core.Page.Page`1.IsFirstPage">
+            <summary>
+            是否是首页（第一页），第一页页码为1
+            </summary>
+        </member>
+        <member name="P:Dswork.Core.Page.Page`1.IsHasNextPage">
+            <summary>
+            是否有下一页
+            </summary>
+        </member>
+        <member name="P:Dswork.Core.Page.Page`1.IsHasPreviousPage">
+            <summary>
+            是否有上一页
+            </summary>
+        </member>
+        <member name="P:Dswork.Core.Page.Page`1.IsLastPage">
+            <summary>
+            是否是最后一页
+            </summary>
+        </member>
+        <member name="T:Dswork.Core.Page.PageNav`1">
+            <summary>
+            页面显示翻页的对象
+            </summary>
+            <typeparam name="T">详见Tecamo.Core.Page.Page类的T</typeparam>
+        </member>
+        <member name="M:Dswork.Core.Page.PageNav`1.PageNavInit(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            初始化formString
+            </summary>
+            <param name="req"></param>
+        </member>
+        <member name="M:Dswork.Core.Page.PageNav`1.#ctor(System.Web.HttpRequest,Dswork.Core.Page.Page{`0})">
+            <summary>
+            构造函数
+            </summary>
+            <param name="request">HttpRequest</param>
+            <param name="page">Page&lt;T&gt;</param>
+        </member>
+        <member name="M:Dswork.Core.Page.PageNav`1.#ctor(System.Web.HttpRequestBase,Dswork.Core.Page.Page{`0})">
+            <summary>
+            构造函数
+            </summary>
+            <param name="request">HttpRequestBase</param>
+            <param name="page">Page&lt;T&gt;</param>
+        </member>
+        <member name="M:Dswork.Core.Page.PageNav`1.#ctor(System.Web.HttpRequestWrapper,Dswork.Core.Page.Page{`0})">
+            <summary>
+            构造函数
+            </summary>
+            <param name="request">HttpRequestWrapper</param>
+            <param name="page">Page&lt;T&gt;</param>
+        </member>
+        <member name="M:Dswork.Core.Page.PageNav`1.GetForm">
+            <summary>
+            输出表单
+            </summary>
+            <returns>String</returns>
+        </member>
+        <member name="M:Dswork.Core.Page.PageNav`1.GetPage">
+            <summary>
+            显示默认的翻页效果
+            </summary>
+            <returns>String</returns>
+        </member>
+        <member name="M:Dswork.Core.Page.PageNav`1.GetPage(System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            显示分页控件
+            </summary>
+            <param name="isViewTotal">是否显示所有记录数</param>
+            <param name="isViewPageInfo">是否显示页面信息</param>
+            <param name="isShowLink">是否翻页</param>
+            <param name="isShowJump">是否支持跳转</param>
+            <param name="isShowJumpSize">是否支持定制记录数</param>
+            <returns>String</returns>
+        </member>
+        <member name="T:Dswork.Core.Page.PageRequest">
+            <summary>
+            分页请求信息，filters的类型Object，默认初始化是System.Collections.Hashtable
+            </summary>
+        </member>
+        <member name="M:Dswork.Core.Page.PageRequest.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:Dswork.Core.Page.PageRequest.#ctor(System.Object)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="filters">条件，使用HashTable</param>
+        </member>
+        <member name="M:Dswork.Core.Page.PageRequest.#ctor(System.Int32,System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="currentPage">当前页码</param>
+            <param name="pageSize">一页显示的条数</param>
+        </member>
+        <member name="M:Dswork.Core.Page.PageRequest.#ctor(System.Int32,System.Int32,System.Object)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="currentPage">当前页码</param>
+            <param name="pageSize">一页显示的条数</param>
+            <param name="filters">条件，使用HashTable</param>
+        </member>
+        <member name="P:Dswork.Core.Page.PageRequest.CurrentPage">
+            <summary>
+            取得当前页
+            </summary>
+        </member>
+        <member name="P:Dswork.Core.Page.PageRequest.Filters">
+            <summary>
+            设置参数，使用HashTable
+            </summary>
+        </member>
+        <member name="P:Dswork.Core.Page.PageRequest.PageName">
+            <summary>
+            设置当前页码的参数名，默认值是page
+            </summary>
+        </member>
+        <member name="P:Dswork.Core.Page.PageRequest.PageSize">
+            <summary>
+            设置一页显示的条数
+            </summary>
+        </member>
+        <member name="P:Dswork.Core.Page.PageRequest.PageSizeName">
+            <summary>
+            设置一页显示的条数的参数名，默认值是pageSize
+            </summary>
+        </member>
+        <member name="T:Dswork.Core.Upload.JskeyUpload">
+            <summary>
+            临时文件上传服务类
+            </summary>
+        </member>
+        <member name="F:Dswork.Core.Upload.JskeyUpload.UPLOAD_SAVEPATH">
+            <summary>
+            临时上传总目录
+            </summary>
+        </member>
+        <member name="F:Dswork.Core.Upload.JskeyUpload.UPLOAD_MAXSIZE">
+            <summary>
+            文件占用最大空间（bit）
+            </summary>
+        </member>
+        <member name="F:Dswork.Core.Upload.JskeyUpload.UPLOAD_IMAGE">
+            <summary>
+            默认允许上传的图片后缀
+            </summary>
+        </member>
+        <member name="F:Dswork.Core.Upload.JskeyUpload.UPLOAD_FILE">
+            <summary>
+            默认允许上传的文件后缀
+            </summary>
+        </member>
+        <member name="M:Dswork.Core.Upload.JskeyUpload.GetToByte(System.String)">
+            <summary>
+            将一个文件读成byte(但需要注意文件太大时，内存是否足够)
+            </summary>
+            <param name="filePath">文件名称(全路径)</param>
+            <returns>成功返回byte[]，失败返回null</returns>
+        </member>
+        <member name="M:Dswork.Core.Upload.JskeyUpload.GetSavePath(System.Int64,System.Int64)">
+            <summary>
+            返回用于保存的临时目录，以"/"结尾
+            </summary>
+            <param name="sessionKey">用户临时主目录</param>
+            <param name="fileKey">用户临时子目录</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:Dswork.Core.Upload.JskeyUpload.GetFile(System.Int64,System.Int64)">
+            <summary>
+            根据参数取得上传的文件列表
+            </summary>
+            <param name="sessionKey">用户临时主目录</param>
+            <param name="fileKey">用户临时子目录</param>
+            <returns>FileInfo[]</returns>
+        </member>
+        <member name="M:Dswork.Core.Upload.JskeyUpload.DelFile(System.Int64,System.Int64)">
+            <summary>
+            删除指定的临时子目录
+            </summary>
+            <param name="sessionKey">用户临时主目录</param>
+            <param name="fileKey">用户临时子目录</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:Dswork.Core.Upload.JskeyUpload.GetUploadExt(System.String)">
+            <summary>
+            返回允许上传的后缀名字符串
+            </summary>
+            <param name="ext">需要过滤的上传文件后缀名，格式为"***,***"</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:Dswork.Core.Upload.JskeyUpload.GetSessionKey(System.Web.HttpRequest)">
+            <summary>
+            获取sessionKey，没有则新创建一个
+            </summary>
+            <param name="request">HttpRequest</param>
+            <returns>long</returns>
+        </member>
+        <member name="M:Dswork.Core.Upload.JskeyUpload.GetSessionKey(System.Web.HttpRequestBase)">
+            <summary>
+            获取sessionKey，没有则新创建一个
+            </summary>
+            <param name="request">HttpRequestBase</param>
+            <returns>long</returns>
+        </member>
+        <member name="M:Dswork.Core.Upload.JskeyUpload.GetSessionKey(System.Web.HttpRequestWrapper)">
+            <summary>
+            获取sessionKey，没有则新创建一个
+            </summary>
+            <param name="request">HttpRequestWrapper</param>
+            <returns>long</returns>
+        </member>
+        <member name="T:Dswork.Core.Util.EncryptUtil">
+            <summary>
+            加密算法（Base64、DES、MD5、SHA-1）
+            </summary>
+        </member>
+        <member name="M:Dswork.Core.Util.EncryptUtil.EncryptMd5(System.String)">
+            <summary>
+            MD5加密
+            </summary>
+            <param name="str">需要加密的字符串</param>
+            <returns>32位MD5的String，失败返回null</returns>
+        </member>
+        <member name="M:Dswork.Core.Util.EncryptUtil.EncryptSha1(System.String)">
+            <summary>
+            SHA-1加密
+            </summary>
+            <param name="str">需要加密的字符串</param>
+            <returns>SHA-1的String，失败返回null</returns>
+        </member>
+        <member name="M:Dswork.Core.Util.EncryptUtil.EncodeBase64(System.String)">
+            <summary>
+            将字符串转化为base64编码
+            </summary>
+            <param name="str">需要加密的字符串</param>
+            <returns>base64编码的字符串，失败返回null</returns>
+        </member>
+        <member name="M:Dswork.Core.Util.EncryptUtil.DecodeBase64(System.String)">
+            <summary>
+            将base64编码的字符串进行解码
+            </summary>
+            <param name="str">base64编码的字符串</param>
+            <returns>解码后的字符串，失败返回null</returns>
+        </member>
+        <member name="M:Dswork.Core.Util.EncryptUtil.EncodeByteBase64(System.Byte[])">
+            <summary>
+            将byte[]转化为base64编码
+            </summary>
+            <param name="byteArray">需要加密的字符串</param>
+            <returns>base64编码的byte[]，失败返回null</returns>
+        </member>
+        <member name="M:Dswork.Core.Util.EncryptUtil.DecodeByteBase64(System.String)">
+            <summary>
+            将base64编码的字符串进行解码
+            </summary>
+            <param name="str">base64编码的字符串</param>
+            <returns>解码后的byte[]，失败返回null</returns>
+        </member>
+        <member name="M:Dswork.Core.Util.EncryptUtil.EncodeDes(System.String,System.String)">
+            <summary>
+            将字符串转化为des编码
+            </summary>
+            <param name="str">需要加密的String</param>
+            <param name="key">密钥</param>
+            <returns>des编码的String</returns>
+        </member>
+        <member name="M:Dswork.Core.Util.EncryptUtil.DecodeDes(System.String,System.String)">
+            <summary>
+            将des编码的字符串进行解码
+            </summary>
+            <param name="str">des编码的字符串</param>
+            <param name="key">密钥</param>
+            <returns>解码后的字符串</returns>
+        </member>
+        <member name="T:Dswork.Core.Util.EnvironmentUtil">
+            <summary>
+            读取系统properties配置文件，默认路径为："/Config/properties.config"
+            </summary>
+        </member>
+        <member name="M:Dswork.Core.Util.EnvironmentUtil.GetStringProperty(System.String)">
+            <summary>
+            获得系统属性配置信息，如果没有则返回null
+            </summary>
+            <param name="name">属性名</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:Dswork.Core.Util.EnvironmentUtil.GetToLong(System.String,System.Int64)">
+            <summary>
+            获得系统属性配置信息,如果没有则返回默认值(长整型)
+            </summary>
+            <param name="name">属性名</param>
+            <param name="defaultValue">默认值</param>
+            <returns>long</returns>
+        </member>
+        <member name="M:Dswork.Core.Util.EnvironmentUtil.GetToString(System.String,System.String)">
+            <summary>
+            获得系统属性配置信息,如果没有则返回默认值(字符串类型)
+            </summary>
+            <param name="name">属性名</param>
+            <param name="defaultValue">默认值</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:Dswork.Core.Util.EnvironmentUtil.GetToBoolean(System.String,System.Boolean)">
+            <summary>
+            获得系统属性配置信息,如果没有则返回默认值("true"、"false")
+            </summary>
+            <param name="name">属性名</param>
+            <param name="defaultValue">默认值</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="T:Dswork.Core.Util.FileUtil">
+            <summary>
+            文件对象操作类
+            </summary>
+        </member>
+        <member name="M:Dswork.Core.Util.FileUtil.Copy(System.String,System.String)">
+            <summary>
+            复制，覆盖目标，复制文件或文件夹（包括子文件夹）到目标位置
+            </summary>
+            <param name="fromFilePath">源文件或文件夹路径(全路径)</param>
+            <param name="toFilePath">目标文件或文件夹路径(全路径)</param>
+        </member>
+        <member name="M:Dswork.Core.Util.FileUtil.Copy(System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            复制
+            </summary>
+            <param name="fromFilePath">源文件或文件夹路径(全路径)</param>
+            <param name="toFilePath">目标文件或文件夹路径(全路径)</param>
+            <param name="overwrite">复制过程中遇到已存在的文件夹或文件是否覆盖改写</param>
+            <param name="copySubdir">复制文件夹时，是否复制子文件夹</param>
+        </member>
+        <member name="M:Dswork.Core.Util.FileUtil.CreateFolder(System.String)">
+            <summary>
+            根据文件夹路径创建文件夹
+            </summary>
+            <param name="filePath">文件夹全路径</param>
+        </member>
+        <member name="M:Dswork.Core.Util.FileUtil.Delete(System.String)">
+            <summary>
+            删除
+            </summary>
+            <param name="filePath">删除的文件夹或文件名称(全路径)</param>
+            <returns>成功返回true，失败返回false</returns>
+        </member>
+        <member name="M:Dswork.Core.Util.FileUtil.Delete(System.String,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            删除
+            </summary>
+            <param name="filePath">删除的文件夹或文件名称(全路径)</param>
+            <param name="isDeleteDir">是否删除自己（删除对象为文件夹时有效），值为false时isDeleteSubDir和isKeepStructure参数有效</param>
+            <param name="isDeleteSubDir">是否删除子文件夹，false时仅删除当前目录下的文件，值为true是isKeepStructure参数有效</param>
+            <param name="isKeepStructure">是否保留子文件夹的目录结构</param>
+            <returns>成功返回true，失败返回false</returns>
+        </member>
+        <member name="M:Dswork.Core.Util.FileUtil.GetFileExt(System.String)">
+            <summary>
+            取得文件后缀名
+            </summary>
+            <param name="filePath">文件名称(全路径)</param>
+            <returns>返回String，文件不存在则返回null，没后缀名则返回""</returns>
+        </member>
+        <member name="M:Dswork.Core.Util.FileUtil.GetRefrainFileName(System.String,System.String)">
+            <summary>
+            返回不重名的名称，失败返回空字符串
+            </summary>
+            <param name="fileName">不包括路径的文件夹或文件名称</param>
+            <param name="realPath">需要存放的文件夹的路径(不包括文件夹或文件名称)</param>
+            <returns>String，返回fileName或新名称："原名称(数字)"+".原扩展名"(有扩展名则加扩展名，无则不加)</returns>
+        </member>
+        <member name="M:Dswork.Core.Util.FileUtil.GetSize(System.String)">
+            <summary>
+            返回指定文件夹或文件的大小，单位bit
+            </summary>
+            <param name="filePath">文件名称(全路径)</param>
+            <returns>long</returns>
+        </member>
+        <member name="M:Dswork.Core.Util.FileUtil.GetToByte(System.IO.Stream)">
+            <summary>
+            Stream转化为byte[]
+            </summary>
+            <param name="inStream">输入流</param>
+            <returns>byte[]</returns>
+        </member>
+        <member name="M:Dswork.Core.Util.FileUtil.GetToByte(System.String)">
+            <summary>
+            File转化为byte[](注意内存是否足够)
+            </summary>
+            <param name="filePath">文件名称(全路径)</param>
+            <returns>成功返回byte[]，失败返回null</returns>
+        </member>
+        <member name="M:Dswork.Core.Util.FileUtil.GetToStream(System.Byte[])">
+            <summary>
+            byte[]转化为Stream
+            </summary>
+            <param name="bytes">byte[]</param>
+            <returns>Stream</returns>
+        </member>
+        <member name="M:Dswork.Core.Util.FileUtil.GetToString(System.IO.Stream,System.String)">
+            <summary>
+            将Stream转换为字符串
+            </summary>
+            <param name="inStream">输入流</param>
+            <param name="charsetName">字符集，如：utf-8，gbk</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:Dswork.Core.Util.FileUtil.ReadFile(System.String,System.String)">
+            <summary>
+            读取文件
+            </summary>
+            <param name="filePath">文件名称(全路径)</param>
+            <param name="charsetName">字符集，如：utf-8，gbk</param>
+            <returns>成功返回String，失败返回null</returns>
+        </member>
+        <member name="M:Dswork.Core.Util.FileUtil.WriteFile(System.String,System.IO.Stream,System.Boolean)">
+            **
+        </member>
+        <member name="M:Dswork.Core.Util.FileUtil.WriteFile(System.String,System.String,System.String)">
+            <summary>
+            写入文件，存在则覆盖（目标只能是文件）
+            </summary>
+            <param name="filePath">文件名称(全路径)</param>
+            <param name="content">文件内容</param>
+            <param name="charsetName">字符集，如：utf-8，gbk</param>
+            <returns>Boolean 成功返回true，失败返回false</returns>
+        </member>
+        <member name="M:Dswork.Core.Util.FileUtil.WriteFile(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            写入文件
+            </summary>
+            <param name="filePath">文件名称(全路径)</param>
+            <param name="content">文件内容</param>
+            <param name="charsetName">字符集，如：utf-8，gbk</param>
+            <param name="overwrite">是否覆盖，目标只能是文件</param>
+            <returns>Boolean 成功返回true，失败返回false</returns>
+        </member>
+        <member name="T:Dswork.Core.Util.TimeUtil">
+            <summary>
+            时间操作类
+            </summary>
+        </member>
+        <member name="M:Dswork.Core.Util.TimeUtil.GetCurrentTime">
+            <summary>
+            返回当前的时间，格式为：yyyy-MM-dd HH:mm:ss
+            </summary>
+            <returns>string</returns>
+        </member>
+        <member name="M:Dswork.Core.Util.TimeUtil.GetCurrentDate">
+            <summary>
+            返回当前的时间，格式为：yyyy-MM-dd
+            </summary>
+            <returns>string</returns>
+        </member>
+        <member name="M:Dswork.Core.Util.TimeUtil.GetCurrentTime(System.String)">
+            <summary>
+            返回当前的时间
+            </summary>
+            <param name="format">需要显示的格式化参数，如：yyyy-MM-dd HH:mm:ss</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:Dswork.Core.Util.TimeUtil.FormatDate(System.DateTime,System.String)">
+            <summary>
+            格式化时间
+            </summary>
+            <param name="date">需要格式化的时间</param>
+            <param name="format">需要显示的格式化参数，如：yyyy-MM-dd HH:mm:ss</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:Dswork.Core.Util.TimeUtil.ConvertString(System.String,System.String)">
+            <summary>
+            格式化时间
+            </summary>
+            <param name="value">需要格式化的时间</param>
+            <param name="format">对应时间字符串的格式化参数，如：yyyy-MM-dd HH:mm:ss</param>
+            <returns>DateTime，失败则返回DateTime.MinValue</returns>
+        </member>
+        <member name="M:Dswork.Core.Util.TimeUtil.ConvertString(System.String)">
+            <summary>
+            格式化时间，格式为：yyyy-MM-dd HH:mm:ss
+            </summary>
+            <param name="value">需要格式化的时间字符串，格式为：yyyy-MM-dd HH:mm:ss</param>
+            <returns>DateTime</returns>
+        </member>
+        <member name="T:Dswork.Core.Util.UniqueId">
+            <summary>
+            ID生成类
+            </summary>
+        </member>
+        <member name="M:Dswork.Core.Util.UniqueId.GenId">
+            <summary>
+            根据时间戳产生一个唯一ID，具有防止重复机制，18位
+            </summary>
+            <returns>long</returns>
+        </member>
+        <member name="M:Dswork.Core.Util.UniqueId.GenGuid">
+            <summary>
+            返回GUID，格式00000000-0000-0000-0000-000000000000
+            </summary>
+            <returns>GUID</returns>
+        </member>
+    </members>
+</doc>

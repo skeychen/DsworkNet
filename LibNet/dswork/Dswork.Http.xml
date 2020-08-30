@@ -1,0 +1,293 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Dswork.Http</name>
+    </assembly>
+    <members>
+        <member name="T:Dswork.Http.HttpUtil">
+            <summary>
+            封装http请求
+            </summary>
+        </member>
+        <member name="M:Dswork.Http.HttpUtil.SetConnectTimeout(System.Int32)">
+            <summary>
+            设置超时时间毫秒
+            </summary>
+            <param name="connectTimeout">int</param>
+            <returns>HttpUtil</returns>
+        </member>
+        <member name="M:Dswork.Http.HttpUtil.SetContentType(System.String)">
+            <summary>
+            设置contentType
+            </summary>
+            <param name="contentType">String</param>
+            <returns>HttpUtil</returns>
+        </member>
+        <member name="M:Dswork.Http.HttpUtil.SetReadTimeout(System.Int32)">
+            <summary>
+            设置读取超时时间毫秒
+            </summary>
+            <param name="readTimeout">int</param>
+            <returns>HttpUtil</returns>
+        </member>
+        <member name="M:Dswork.Http.HttpUtil.SetRequestMethod(System.String)">
+            <summary>
+            设置requestMethod
+            </summary>
+            <param name="requestMethod">String</param>
+            <returns>HttpUtil</returns>
+        </member>
+        <member name="M:Dswork.Http.HttpUtil.SetRequestProperty(System.String,System.String)">
+            <summary>
+            设置requestProperty
+            </summary>
+            <param name="key">String</param>
+            <param name="value">String</param>
+            <returns>HttpUtil</returns>
+        </member>
+        <member name="M:Dswork.Http.HttpUtil.SetUserAgent(System.String)">
+            <summary>
+            设置userAgent
+            </summary>
+            <param name="userAgent">String</param>
+            <returns>HttpUtil</returns>
+        </member>
+        <member name="M:Dswork.Http.HttpUtil.Create(System.String)">
+            <summary>
+            创建新的http(s)请求，重置除cookie、connectTimeout、readTimeout、userAgent外的所有设置
+            </summary>
+            <param name="url">url地址请求</param>
+            <returns>HttpUtil</returns>
+        </member>
+        <member name="M:Dswork.Http.HttpUtil.Create(System.String,System.Boolean)">
+            <summary>
+            创建新的http(s)请求，重置除cookie、connectTimeout、readTimeout、userAgent外的所有设置
+            </summary>
+            <param name="url">url地址请求</param>
+            <param name="isHostnameVerifier">是否不确认主机名</param>
+            <returns>HttpUtil</returns>
+        </member>
+        <member name="M:Dswork.Http.HttpUtil.Connect">
+            <summary>
+            连接并返回网页文本
+            </summary>
+            <returns>String</returns>
+        </member>
+        <member name="M:Dswork.Http.HttpUtil.Connect(System.String)">
+            <summary>
+            连接并返回网页文本
+            </summary>
+            <param name="charsetName">对封装的表单、获取的网页内容进行的编码设置</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:Dswork.Http.HttpUtil.ConnectStream">
+            <summary>
+            连接并返回网页流
+            </summary>
+            <returns>Stream</returns>
+        </member>
+        <member name="M:Dswork.Http.HttpUtil.ConnectStream(System.String)">
+            <summary>
+            连接并返回网页流
+            </summary>
+            <param name="charsetName">对封装的表单、获取的网页内容进行的编码设置</param>
+            <returns>Stream</returns>
+        </member>
+        <member name="M:Dswork.Http.HttpUtil.SetDataBody(System.Byte[])">
+            <summary>
+            设置数据流，优先使用form值
+            </summary>
+            <param name="arr">byte[]</param>
+            <returns>HttpUtil</returns>
+        </member>
+        <member name="M:Dswork.Http.HttpUtil.ClearForm">
+            <summary>
+            清除已清加的表单项
+            </summary>
+        </member>
+        <member name="M:Dswork.Http.HttpUtil.AddForm(System.String,System.String)">
+            <summary>
+            添加表单项
+            </summary>
+            <param name="name">String</param>
+            <param name="value">String</param>
+            <returns>HttpUtil</returns>
+        </member>
+        <member name="M:Dswork.Http.HttpUtil.AddForms(Dswork.Http.NameValue[])">
+            <summary>
+            批量添加表单项
+            </summary>
+            <param name="array">NameValue[]</param>
+            <returns>HttpUtil</returns>
+        </member>
+        <member name="M:Dswork.Http.HttpUtil.ClearCookies">
+            <summary>
+            清除已清加的cookie
+            </summary>
+            <returns>HttpUtil</returns>
+        </member>
+        <member name="M:Dswork.Http.HttpUtil.AddCookie(System.String,System.String)">
+            <summary>
+            添加cookie
+            </summary>
+            <param name="name">String</param>
+            <param name="value">String</param>
+            <returns>HttpUtil</returns>
+        </member>
+        <member name="M:Dswork.Http.HttpUtil.AddCookies(Dswork.Http.Cookie[])">
+            <summary>
+            批量添加cookie
+            </summary>
+            <param name="array">Cookie[]</param>
+            <returns>HttpUtil</returns>
+        </member>
+        <member name="M:Dswork.Http.HttpUtil.GetCloneCookies(System.Boolean)">
+            <summary>
+            复制cookie
+            </summary>
+            <param name="onlySessionCookie">true：仅复制会话cookie false：复制非会话cookie null:全部cookie</param>
+            <returns>List&lt;Cookie&gt;</returns>
+        </member>
+        <member name="P:Dswork.Http.HttpUtil.Https">
+            <summary>
+            返回当前是否https请求
+            </summary>
+        </member>
+        <member name="T:Dswork.Http.NameValue">
+            <summary>
+            自定义NameValue
+            </summary>
+        </member>
+        <member name="M:Dswork.Http.NameValue.#ctor(System.String,System.String)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="name">String</param>
+            <param name="value">String</param>
+        </member>
+        <member name="P:Dswork.Http.NameValue.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:Dswork.Http.NameValue.Value">
+            <summary>
+            Value
+            </summary>
+        </member>
+        <member name="T:Dswork.Http.Cookie">
+            <summary>
+            自定义Cookie
+            </summary>
+        </member>
+        <member name="M:Dswork.Http.Cookie.#ctor(System.String,System.String)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="name">String</param>
+            <param name="value">String</param>
+        </member>
+        <member name="M:Dswork.Http.Cookie.IsExpired(System.DateTime)">
+            <summary>
+            判断是否过期
+            </summary>
+            <param name="date">DateTime</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:Dswork.Http.Cookie.ToString">
+            <summary>
+            ToString
+            </summary>
+        </member>
+        <member name="M:Dswork.Http.Cookie.Clone">
+            <summary>
+            复制为新对象
+            </summary>
+        </member>
+        <member name="P:Dswork.Http.Cookie.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:Dswork.Http.Cookie.Value">
+            <summary>
+            Value
+            </summary>
+        </member>
+        <member name="P:Dswork.Http.Cookie.Domain">
+            <summary>
+            Domain
+            </summary>
+        </member>
+        <member name="P:Dswork.Http.Cookie.ExpiryDate">
+            <summary>
+            ExpiryDate
+            </summary>
+        </member>
+        <member name="P:Dswork.Http.Cookie.Path">
+            <summary>
+            Path
+            </summary>
+        </member>
+        <member name="P:Dswork.Http.Cookie.Secure">
+            <summary>
+            Secure
+            </summary>
+        </member>
+        <member name="P:Dswork.Http.Cookie.HttpOnly">
+            <summary>
+            HttpOnly
+            </summary>
+        </member>
+        <member name="T:Dswork.Http.HttpCommon">
+            <summary>
+            HttpCommon主要供HttpUtil内部调用
+            </summary>
+        </member>
+        <member name="M:Dswork.Http.HttpCommon.format(System.Collections.Generic.List{Dswork.Http.NameValue},System.String)">
+            <summary>
+            format
+            </summary>
+            <param name="parameters">List&lt;NameValue&gt;</param>
+            <param name="charsetName">String</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:Dswork.Http.HttpCommon.format(System.Collections.Generic.List{Dswork.Http.NameValue},System.String,System.String)">
+            <summary>
+            format
+            </summary>
+            <param name="parameters">List&lt;NameValue&gt;</param>
+            <param name="parameterSeparator">String</param>
+            <param name="charsetName">String</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:Dswork.Http.HttpCommon.parse(System.Collections.Generic.List{Dswork.Http.Cookie},System.String)">
+            <summary>
+            parse
+            </summary>
+            <param name="parameters">List&lt;Cookie&gt;</param>
+            <param name="parameterSeparator">String</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:Dswork.Http.HttpCommon.GetHttpCookies(System.Net.CookieCollection)">
+            <summary>
+            GetHttpCookies
+            </summary>
+            <param name="cookies">CookieCollection</param>
+            <returns>List&lt;Cookie&gt;</returns>
+        </member>
+        <member name="M:Dswork.Http.HttpCommon.GetHttpCookies(System.Collections.Generic.List{Dswork.Http.Cookie},System.Boolean)">
+            <summary>
+            GetHttpCookies
+            </summary>
+            <param name="cookies">List&lt;Cookie&gt;</param>
+            <param name="hasSecure">Boolean</param>
+            <returns>List&lt;Cookie&gt;</returns>
+        </member>
+        <member name="M:Dswork.Http.HttpCommon.HostnameVerifier">
+            <summary>
+            HostnameVerifier
+            </summary>
+        </member>
+    </members>
+</doc>

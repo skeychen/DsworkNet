@@ -1,0 +1,436 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Dswork.Web</name>
+    </assembly>
+    <members>
+        <member name="T:Dswork.Web.MyCookie">
+            <summary>
+            Cookie的常用操作
+            </summary>
+        </member>
+        <member name="M:Dswork.Web.MyCookie.#ctor(System.Web.HttpContext)">
+            <summary>
+            初始化cookie
+            </summary>
+            <param name="context">HttpContext</param>
+        </member>
+        <member name="M:Dswork.Web.MyCookie.#ctor(System.Web.HttpContextBase)">
+            <summary>
+            初始化cookie
+            </summary>
+            <param name="context">HttpContextBase</param>
+        </member>
+        <member name="M:Dswork.Web.MyCookie.#ctor(System.Web.HttpContextWrapper)">
+            <summary>
+            初始化cookie
+            </summary>
+            <param name="context">HttpContextWrapper</param>
+        </member>
+        <member name="M:Dswork.Web.MyCookie.#ctor(System.Web.HttpRequest,System.Web.HttpResponse)">
+            <summary>
+            初始化cookie
+            </summary>
+            <param name="request">HttpRequest</param>
+            <param name="response">HttpResponse</param>
+        </member>
+        <member name="M:Dswork.Web.MyCookie.#ctor(System.Web.HttpRequestBase,System.Web.HttpResponseBase)">
+            <summary>
+            初始化cookie
+            </summary>
+            <param name="request">HttpRequestBase</param>
+            <param name="response">HttpResponseBase</param>
+        </member>
+        <member name="M:Dswork.Web.MyCookie.#ctor(System.Web.HttpRequestWrapper,System.Web.HttpResponseWrapper)">
+            <summary>
+            初始化cookie
+            </summary>
+            <param name="request">HttpRequestWrapper</param>
+            <param name="response">HttpResponseWrapper</param>
+        </member>
+        <member name="M:Dswork.Web.MyCookie.AddCookie(System.String,System.String)">
+            <summary>
+            往客户端写入Cookie，当页面关闭时删除cookie，当前应用所有页面有效
+            </summary>
+            <param name="name">cookie参数名</param>
+            <param name="value">cookie参数值</param>
+        </member>
+        <member name="M:Dswork.Web.MyCookie.AddCookie(System.String,System.String,System.Int32)">
+            <summary>
+            往客户端写入Cookie，当前应用所有页面有效
+            </summary>
+            <param name="name">cookie参数名</param>
+            <param name="value">cookie参数值</param>
+            <param name="maxAge">有效时间，int(单位秒)，0:删除Cookie，-1:页面关闭时删除cookie</param>
+        </member>
+        <member name="M:Dswork.Web.MyCookie.AddCookie(System.String,System.String,System.Int32,System.String)">
+            <summary>
+            往客户端写入Cookie，当前应用所有页面有效
+            </summary>
+            <param name="name">cookie参数名</param>
+            <param name="value">cookie参数值</param>
+            <param name="maxAge">有效时间，int(单位秒)，0:删除Cookie，-1:页面关闭时删除cookie</param>
+            <param name="path">与cookie一起传输的虚拟路径</param>
+        </member>
+        <member name="M:Dswork.Web.MyCookie.AddCookie(System.String,System.String,System.Int32,System.String,System.String)">
+            <summary>
+            往客户端写入Cookie，当前应用所有页面有效
+            </summary>
+            <param name="name">cookie参数名</param>
+            <param name="value">cookie参数值</param>
+            <param name="maxAge">有效时间，int(单位秒)，0:删除Cookie，-1:页面关闭时删除cookie</param>
+            <param name="path">与cookie一起传输的虚拟路径</param>
+            <param name="domain">与cookie关联的域</param>
+        </member>
+        <member name="M:Dswork.Web.MyCookie.AddCookie(System.String,System.String,System.Int32,System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            往客户端写入Cookie，当前应用所有页面有效
+            </summary>
+            <param name="name">cookie参数名</param>
+            <param name="value">cookie参数值</param>
+            <param name="maxAge">有效时间，int(单位秒)，0:删除Cookie，-1:页面关闭时删除cookie</param>
+            <param name="path">与cookie一起传输的虚拟路径</param>
+            <param name="domain">与cookie关联的域</param>
+            <param name="isSecure">是否在https请求时才进行传输</param>
+            <param name="isHttpOnly">是否只能通过http访问</param>
+        </member>
+        <member name="M:Dswork.Web.MyCookie.DelCookie(System.String)">
+            <summary>
+            删除cookie
+            </summary>
+            <param name="name">cookie参数名</param>
+        </member>
+        <member name="M:Dswork.Web.MyCookie.GetValue(System.String)">
+            <summary>
+            根据cookie名称取得参数值
+            </summary>
+            <param name="name">cookie参数名</param>
+            <returns>存在返回String，不存在返回null</returns>
+        </member>
+        <member name="M:Dswork.Web.MyCookie.Exist(System.String)">
+            <summary>
+            根据Cookie参数名判断Cookie是否存在该值
+            </summary>
+            <param name="name">cookie参数名</param>
+            <returns>存在返回true，不存在返回false</returns>
+        </member>
+        <member name="T:Dswork.Web.MyFile">
+            <summary>
+            Request表单文件
+            </summary>
+        </member>
+        <member name="P:Dswork.Web.MyFile.FieldName">
+            <summary>
+            文件的字段名
+            </summary>
+        </member>
+        <member name="P:Dswork.Web.MyFile.FileName">
+            <summary>
+            文件的文件名
+            </summary>
+        </member>
+        <member name="P:Dswork.Web.MyFile.FileExt">
+            <summary>
+            文件的扩展名
+            </summary>
+        </member>
+        <member name="P:Dswork.Web.MyFile.ContentType">
+            <summary>
+            文件的Content-Type
+            </summary>
+        </member>
+        <member name="P:Dswork.Web.MyFile.ContentDisp">
+            <summary>
+            文件的Content-Disposition
+            </summary>
+        </member>
+        <member name="P:Dswork.Web.MyFile.FileData">
+            <summary>
+            文件的字节流
+            </summary>
+        </member>
+        <member name="T:Dswork.Web.MyRequest">
+            <summary>
+            扩展Request的功能
+            </summary>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.#ctor(System.Web.HttpRequest)">
+            <summary>
+            初始化request
+            </summary>
+            <param name="request">HttpRequest</param>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.#ctor(System.Web.HttpRequestBase)">
+            <summary>
+            初始化request
+            </summary>
+            <param name="request">HttpRequestBase</param>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.#ctor(System.Web.HttpRequestWrapper)">
+            <summary>
+            初始化request
+            </summary>
+            <param name="request">HttpRequestWrapper</param>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetCurrentUrl">
+            <summary>
+            取得当前页的URL，如有参数则带参数
+            </summary>
+            <returns>String</returns>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetCurrentUrlUniteParameter">
+            <summary>
+            取得当前页的URL，如有参数则带参数，但多个同名参数以","合并为一个参数
+            </summary>
+            <returns>String</returns>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetCurrentUrlUniteParameter(System.String)">
+            <summary>
+            取得当前页的URL，如有参数则带参数，但多个同名参数以separator合并为一个参数
+            </summary>
+            <param name="separator">分隔符</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetDouble(System.String)">
+            <summary>
+            从Request中取得double值，如果取得的值为null，则返回0D
+            </summary>
+            <param name="key">request参数名</param>
+            <returns>double</returns>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetDouble(System.String,System.Double)">
+            <summary>
+            从Request中取得double值，如果取得的值为null，则使用默认值
+            </summary>
+            <param name="key">request参数名</param>
+            <param name="defaultValue">默认值</param>
+            <returns>double</returns>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetDoubleArray(System.String,System.Double)">
+            <summary>
+            返回数组取得多个同名参数值，如果取得的值为null，则使用默认值
+            </summary>
+            <param name="key">request参数名</param>
+            <param name="defaultValue">默认值</param>
+            <returns>double[]</returns>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetFillObject(System.Object)">
+            <summary>
+            从Request中获取值并自动填充到Object
+            </summary>
+            <param name="o">Object</param>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetFillObject``1(``0)">
+            <summary>
+            从Request中获取值并自动填充到Object
+            </summary>
+            <typeparam name="T">Object</typeparam>
+            <param name="o">T</param>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetFillObject(System.Object,System.String)">
+            <summary>
+            从Request中获取值并自动填充到Object
+            </summary>
+            <param name="o">Object</param>
+            <param name="clazzName">request中获取类的属性key为clazzName加上属性名，即clazzName为key的前缀</param>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetFillObject``1(``0,System.String)">
+            <summary>
+            从Request中获取值并自动填充到Object
+            </summary>
+            <typeparam name="T">Object</typeparam>
+            <param name="o">T</param>
+            <param name="clazzName">request中获取类的属性key为clazzName加上属性名，即clazzName为key的前缀</param>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetFloat(System.String)">
+            <summary>
+            从Request中取得float值，如果取得的值为null，则返回0F
+            </summary>
+            <param name="key">request参数名</param>
+            <returns>float</returns>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetFloat(System.String,System.Single)">
+            <summary>
+            从Request中取得float值，如果取得的值为null，则使用默认值
+            </summary>
+            <param name="key">request参数名</param>
+            <param name="defaultValue">默认值</param>
+            <returns>float</returns>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetFloatArray(System.String,System.Single)">
+            <summary>
+            返回数组取得多个同名参数值，如果取得的值为null，则使用默认值
+            </summary>
+            <param name="key">request参数名</param>
+            <param name="defaultValue">默认值</param>
+            <returns>float[]</returns>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetInputValue(System.String)">
+            <summary>
+            将取得的值中的"'替换为&amp;quot; &amp;#039;，如果取得的值为null，则返回空字符串
+            </summary>
+            <param name="key">request参数名</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetInt(System.String)">
+            <summary>
+            从request中取得int值，如果取得的值为null，则返回0
+            </summary>
+            <param name="key">request参数名</param>
+            <returns>int</returns>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetInt(System.String,System.Int32)">
+            <summary>
+            从request中取得int值，如果取得的值为null，则使用默认值
+            </summary>
+            <param name="key">request参数名</param>
+            <param name="defaultValue">默认值</param>
+            <returns>int</returns>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetIntArray(System.String,System.Int32)">
+            <summary>
+            返回数组取得多个同名参数值，如果取得的值为null，则使用默认值
+            </summary>
+            <param name="key">request参数名</param>
+            <param name="defaultValue">默认值</param>
+            <returns>int[]</returns>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetLong(System.String)">
+            <summary>
+            从Request中取得long值，如果取得的值为null，则返回0L
+            </summary>
+            <param name="key">request参数名</param>
+            <returns>long</returns>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetLong(System.String,System.Int64)">
+            <summary>
+            从request中取得long值，如果取得的值为null，则使用默认值
+            </summary>
+            <param name="key">request参数名</param>
+            <param name="defaultValue">默认值</param>
+            <returns>long</returns>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetLongArray(System.String,System.Int64)">
+            <summary>
+            返回数组取得多个同名参数值，如果取得的值为null，则使用默认值
+            </summary>
+            <param name="key">request参数名</param>
+            <param name="defaultValue">默认值</param>
+            <returns>long[]</returns>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetParameterValueMap(System.Boolean,System.Boolean)">
+            <summary>
+            取得请求中所有的参数集合形成一个map，根据remainArray参数决定返回字符串数组或字符串
+            </summary>
+            <param name="remainArray">是否保留为数组，否则以","分隔成一个字符串</param>
+            <param name="isSecure">是否过滤为安全字符</param>
+            <returns>Hashtable </returns>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetParameterValueMap(System.Boolean,System.String,System.Boolean)">
+            <summary>
+            取得请求中所有的参数集合形成一个map，根据remainArray参数决定返回字符串数组或字符串
+            </summary>
+            <param name="remainArray">是否保留为数组，否则以separator分隔成一个字符串</param>
+            <param name="separator">分隔符</param>
+            <param name="isSecure">是否过滤为安全字符</param>
+            <returns>Hashtable </returns>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetRefererURL">
+            <summary>
+            取的前面页面的地址
+            </summary>
+            <returns>String</returns>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetRequestURI">
+            <summary>
+            取得申请的URL，不包含上下文路径
+            </summary>
+            <returns>String</returns>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetSecureString(System.String)">
+            <summary>
+            取得安全字符串，如果取得的值为null，则返回空字符串
+            </summary>
+            <param name="key">request参数名</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetSecureString(System.String,System.String)">
+            <summary>
+            取得安全字符串，如果取得的值为null，则使用默认值
+            </summary>
+            <param name="key">request参数名</param>
+            <param name="defaultValue">默认值</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetString(System.String)">
+            <summary>
+            取字符串类型的参数，如果取得的值为null，则返回空字符串
+            </summary>
+            <param name="key">request参数名</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetString(System.String,System.String)">
+            <summary>
+            取字符串类型的参数，如果取得的值为null，则使用默认值
+            </summary>
+            <param name="key">request参数名</param>
+            <param name="defaultValue">默认值</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetStringArray(System.String)">
+            <summary>
+            返回数组取得多个同名参数值
+            </summary>
+            <param name="key">request参数名</param>
+            <returns>String[]</returns>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetStringArray(System.String,System.Boolean)">
+            <summary>
+            返回数组取得多个同名参数值
+            </summary>
+            <param name="key">request参数名</param>
+            <param name="hasEmpty">是否去掉空值</param>
+            <returns>String[]</returns>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetStringArray(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            返回数组取得多个同名参数值
+            </summary>
+            <param name="key">request参数名</param>
+            <param name="hasEmpty">是否去掉空值</param>
+            <param name="isSecure">是否过滤为安全字符</param>
+            <returns>String[]</returns>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetStringValues(System.String)">
+            <summary>
+            以","分隔符取得多个同名参数值
+            </summary>
+            <param name="key">request参数名</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetStringValues(System.String,System.String)">
+            <summary>
+            以分隔符取得多个同名参数值
+            </summary>
+            <param name="key">request参数名</param>
+            <param name="separator">分隔符</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.GetStringValues(System.String,System.String,System.Boolean)">
+            <summary>
+            以分隔符取得多个同名参数值
+            </summary>
+            <param name="key">request参数名</param>
+            <param name="separator">分隔符</param>
+            <param name="isSecure">是否过滤为安全字符</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:Dswork.Web.MyRequest.FilterInject(System.String)">
+            <summary>
+            去掉字符，替换;&lt;&gt;()%为双字节字符，替换'为''
+            </summary>
+            <param name="str">需要过滤的String</param>
+            <returns>String</returns>
+        </member>
+    </members>
+</doc>

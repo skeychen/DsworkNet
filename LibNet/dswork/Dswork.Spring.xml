@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Dswork.Spring</name>
+    </assembly>
+    <members>
+        <member name="T:Dswork.Spring.BeanFactory">
+            <summary>
+            从ApplicationContext取得spring管理的类
+            </summary>
+        </member>
+        <member name="M:Dswork.Spring.BeanFactory.GetObject(System.String)">
+            <summary>
+            取得Spring托管的类
+            </summary>
+            <param name="name">托管类的名称</param>
+            <returns>Object</returns>
+        </member>
+        <member name="M:Dswork.Spring.BeanFactory.GetObject``1(System.String)">
+            <summary>
+            取得Spring托管的类
+            </summary>
+            <typeparam name="T">Object</typeparam>
+            <param name="name">托管类的名称</param>
+            <returns>T</returns>
+        </member>
+    </members>
+</doc>
